@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0 - UNRELEASED
+### Added
+- Support for craft 4!
+
+### Changed
+- Its now possible to have both a postDate in the future and an expiration date in the future at the same time
+
 ## 2.1.0 - 2022-03-30
 ### Fixed
 - Fixed a deprecation error for craft 3.7

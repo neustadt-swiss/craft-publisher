@@ -177,11 +177,10 @@ class Entries extends Component
         $postDate = $entry->postDate;
         $expiryDate = $entry->expiryDate;
 
-        $model = new EntryPublish();
-        $model->sourceId = $entry->id;
-        $model->sourceSiteId = $entry->siteId;
-
         if ($postDate > $this->now) {
+            $model = new EntryPublish();
+            $model->sourceId = $entry->id;
+            $model->sourceSiteId = $entry->siteId;
             $model->publishAt = $postDate;
             $model->expire = false;
 
@@ -191,6 +190,9 @@ class Entries extends Component
         }
 
         if ($expiryDate !== null && $expiryDate > $this->now) {
+            $model = new EntryPublish();
+            $model->sourceId = $entry->id;
+            $model->sourceSiteId = $entry->siteId;
             $model->publishAt = $expiryDate;
             $model->expire = true;
 

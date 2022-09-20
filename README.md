@@ -28,10 +28,3 @@ CLI:
 ```shell
 * * * * * [PATH_TO_CRAFT_INSTALLATION]/craft publisher/publish
 ```
-
-## Usage
-
-## What does not work?
-
-Currently it is not possible to have a postDate in the future and a expire date in the future at the same time.
-It is a possible feature for the roadmap but needs a bit of refactoring of the data model.
