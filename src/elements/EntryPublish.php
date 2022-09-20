@@ -131,6 +131,7 @@ class EntryPublish extends Element
             $draft = Entry::find()
                 ->draftId($this->publishDraftId)
                 ->siteId($this->sourceSiteId)
+                ->status(null)
                 ->one();
 
             if ($draft === null) {

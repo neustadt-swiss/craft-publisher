@@ -38,6 +38,7 @@ class EntriesController extends Controller
         $draft = Entry::find()
             ->draftId($draftId)
             ->siteId($siteId)
+            ->status(null)
             ->one();
 
         if ($draft === null) {
