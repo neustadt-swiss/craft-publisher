@@ -2,9 +2,11 @@
 
 namespace goldinteractive\publisher;
 
+use craft\base\Element;
 use craft\base\Plugin;
 use Craft;
 use craft\elements\Entry;
+use craft\events\DefineHtmlEvent;
 use craft\events\ElementEvent;
 use craft\services\Elements;
 use craft\web\twig\variables\CraftVariable;
@@ -62,28 +64,31 @@ class Publisher extends Plugin
                 }
             );
 
-            Craft::$app->view->hook(
-                'cp.entries.edit.details',
-                function (array &$context) {
-                    /** @var $entry craft\elements\Entry */
-                    $entry = $context['entry'];
-                    $isNew = $entry->id === null;
+            Event::on(
+                Element::class,
+                Element::EVENT_DEFINE_SIDEBAR_HTML,
+                function (DefineHtmlEvent $event) {
+                    $element = $event->sender;
 
-                    if ($entry->getIsDraft()) {
-                        $entry = $entry->getCanonical();
+                    if ((get_class($element) == Entry::class)) {
+                        $isNew = $element->id === null;
+
+                        if ($isNew) {
+                            return;
+                        }
+
+                        if ($element->getIsDraft()) {
+                            $element = $element->getCanonical();
+                        }
+
+                        $event->html .= Craft::$app->view->renderTemplate(
+                            'publisher/_cp/entriesEditRightPane',
+                            [
+                                'permissionSuffix' => ':' . $element->getSection()->uid,
+                                'entry'            => $element,
+                            ]
+                        );
                     }
-
-                    if ($isNew || !$entry) {
-                        return null;
-                    }
-
-                    return Craft::$app->view->renderTemplate(
-                        'publisher/_cp/entriesEditRightPane',
-                        [
-                            'permissionSuffix' => ':'.$entry->getSection()->uid,
-                            'entry'            => $entry,
-                        ]
-                    );
                 }
             );
         }
