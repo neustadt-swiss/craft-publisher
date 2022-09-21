@@ -15,7 +15,11 @@ class m210430_124740_AddSourceSiteIdToEntryPublishTable extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{%entrypublishes}}', 'sourceSiteId', $this->integer());
+        $alreadyMigrated = $this->db->columnExists('{{%entrypublishes}}','sourceSiteId');
+
+        if (!$alreadyMigrated) {
+            $this->addColumn('{{%entrypublishes}}', 'sourceSiteId', $this->integer());
+        }
     }
 
     /**

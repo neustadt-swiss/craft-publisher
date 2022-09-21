@@ -17,20 +17,24 @@ class m190726_074724_craft32_upgrade extends Migration
      */
     public function safeUp()
     {
-        MigrationHelper::dropForeignKey('{{%entrypublishes}}', ['draftId'], $this);
+        $alreadyMigrated = $this->db->columnExists('{{%entrypublishes}}','sourceId');
 
-        $this->renameColumn('{{%entrypublishes}}', 'entryId', 'sourceId');
-        $this->renameColumn('{{%entrypublishes}}', 'draftId', 'publishDraftId');
+        if (!$alreadyMigrated) {
+            MigrationHelper::dropForeignKey('{{%entrypublishes}}', ['draftId'], $this);
 
-        $this->addForeignKey(
-            null,
-            '{{%entrypublishes}}',
-            ['publishDraftId'],
-            '{{%drafts}}',
-            ['id'],
-            'CASCADE',
-            'CASCADE'
-        );
+            $this->renameColumn('{{%entrypublishes}}', 'entryId', 'sourceId');
+            $this->renameColumn('{{%entrypublishes}}', 'draftId', 'publishDraftId');
+
+            $this->addForeignKey(
+                null,
+                '{{%entrypublishes}}',
+                ['publishDraftId'],
+                '{{%drafts}}',
+                ['id'],
+                'CASCADE',
+                'CASCADE'
+            );
+        }
     }
 
     /**
