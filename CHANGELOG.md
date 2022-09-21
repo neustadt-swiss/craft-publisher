@@ -6,6 +6,7 @@
 
 ### Changed
 - Its now possible to have both a postDate in the future and an expiration date in the future at the same time
+- Its now possible to publish a draft which is disabled for the currently viewed site
 
 ## 2.1.0 - 2022-03-30
 ### Fixed
