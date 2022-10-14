@@ -58,7 +58,7 @@ class EntryPublish extends Element
      */
     public static function displayName(): string
     {
-        return Craft::t('publisher', 'Entry Publish');
+        return Craft::t('gold-publisher', 'Entry Publish');
     }
 
     /**

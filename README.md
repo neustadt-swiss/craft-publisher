@@ -21,10 +21,10 @@ Call it via CLI or web:
 
 Web:
 ```shell
-* * * * * /usr/bin/curl --silent --compressed {siteUrl}/actions/publisher/api/publish
+* * * * * /usr/bin/curl --silent --compressed {siteUrl}/actions/gold-publisher/api/publish
 ```
 
 CLI:
 ```shell
-* * * * * [PATH_TO_CRAFT_INSTALLATION]/craft publisher/publish
+* * * * * [PATH_TO_CRAFT_INSTALLATION]/craft gold-publisher/publish
 ```

@@ -59,7 +59,7 @@ class Entries extends Component
                 try {
                     Craft::$app->elements->saveElement($entry);
                 } catch (\Throwable $e) {
-                    Craft::error('could not save element while publishing: ' . $e->getMessage(), 'publisher');
+                    Craft::error('could not save element while publishing: ' . $e->getMessage(), 'gold-publisher');
                 }
             }
         }

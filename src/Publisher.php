@@ -82,7 +82,7 @@ class Publisher extends Plugin
                         }
 
                         $event->html .= Craft::$app->view->renderTemplate(
-                            'publisher/_cp/entriesEditRightPane',
+                            'gold-publisher/_cp/entriesEditRightPane',
                             [
                                 'permissionSuffix' => ':' . $element->getSection()->uid,
                                 'entry'            => $element,
