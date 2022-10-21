@@ -28,3 +28,7 @@ CLI:
 ```shell
 * * * * * [PATH_TO_CRAFT_INSTALLATION]/craft gold-publisher/publish
 ```
+
+### Usage with cache plugins
+If you have a fullpage cache plugin like blitz installed, which refreshes it's cache over the queue, make sure you setup a cronjob which runs the queue too.
+(`craft queue/run`)
