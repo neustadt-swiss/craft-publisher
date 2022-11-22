@@ -13,8 +13,8 @@
     }
   },
   "extra": {
-    "handle": "gold-publisher",
-    "name": "Publisher",
+    "handle": "publisher-x",
+    "name": "Publisher X",
     "schemaVersion": "2.0.6",
     "developer": "Gold Interactive",
     "developerUrl": "http://goldinteractive.ch",

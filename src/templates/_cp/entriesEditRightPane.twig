@@ -8,20 +8,20 @@
     <div class="field">
         {% if pendingEntries|length == 0 %}
             <div class="data">
-                <h4>{{ 'No pending publish dates'|t('gold-publisher') }}</h4>
+                <h4>{{ 'No pending publish dates'|t('publisher-x') }}</h4>
             </div>
         {% else %}
             <div class="data">
-                <h4>{{ 'Pending publish dates'|t('gold-publisher') }}</h4>
+                <h4>{{ 'Pending publish dates'|t('publisher-x') }}</h4>
             </div>
 
             {% for pendingEntry in pendingEntries %}
                 {% set title = pendingEntry.draft ? pendingEntry.draft.draftName : pendingEntry.entry.title %}
                 <div class="data">
-                    <h5>{{ title }}{{ pendingEntry.expire ? ' ('~'Expires'|t('gold-publisher')~')' }}</h5>
+                    <h5>{{ title }}{{ pendingEntry.expire ? ' ('~'Expires'|t('publisher-x')~')' }}</h5>
                     <div class="value">
                         {{ pendingEntry.publishAt|date('short') }} {{ pendingEntry.publishAt|time('short') }}
-                        &nbsp;<a href="{{ actionUrl('gold-publisher/entries/delete/', {sourceId: pendingEntry.id}) }}"
+                        &nbsp;<a href="{{ actionUrl('publisher-x/entries/delete/', {sourceId: pendingEntry.id}) }}"
                                  class="btn small">{{ 'Delete'|t('app') }}</a>
                     </div>
                 </div>
@@ -33,10 +33,10 @@
 {% if drafts|length > 0 and canPublishDraft %}
     <div class="meta" style="padding-top: 14px; padding-bottom: 14px;">
         <div class="data">
-            <h4>{{ 'Schedule a publish date'|t('gold-publisher') }}</h4>
+            <h4>{{ 'Schedule a publish date'|t('publisher-x') }}</h4>
         </div>
         <div class="field">
-            <div class="heading"><label>{{ 'Draft'|t('gold-publisher') }}</label></div>
+            <div class="heading"><label>{{ 'Draft'|t('publisher-x') }}</label></div>
             <div class="input">
                 <div class="select">
                     <select name="publisher_draftId">
@@ -55,7 +55,7 @@
         }) }}
 
         {{ forms.dateTimeField({
-            label: "Publish date"|t('gold-publisher'),
+            label: "Publish date"|t('publisher-x'),
             id: 'publishAt',
             name: 'publisher_publishAt',
             value: now,
@@ -67,8 +67,8 @@
             <div class="left">
             </div>
             <div class="right">
-                <input type="button" class="btn formsubmit" value="{{ 'Add publish date'|t('gold-publisher') }}"
-                       data-action="gold-publisher/entries/save"/>
+                <input type="button" class="btn formsubmit" value="{{ 'Add publish date'|t('publisher-x') }}"
+                       data-action="publisher-x/entries/save"/>
             </div>
         </div>
     </div>

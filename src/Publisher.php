@@ -15,7 +15,7 @@ use yii\base\Event;
 
 /**
  * @author    Gold Interactive
- * @package   Publisher
+ * @package   Publisher X
  * @since     0.1.0
  *
  * @property \goldinteractive\publisher\services\Entries $entries
@@ -82,7 +82,7 @@ class Publisher extends Plugin
                         }
 
                         $event->html .= Craft::$app->view->renderTemplate(
-                            'gold-publisher/_cp/entriesEditRightPane',
+                            'publisher-x/_cp/entriesEditRightPane',
                             [
                                 'permissionSuffix' => ':' . $element->getSection()->uid,
                                 'entry'            => $element,
