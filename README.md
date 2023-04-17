@@ -9,6 +9,10 @@ future correctly and will invalidate the cache.
 
 ![Screenshot](resources/img/example1.png)
 
+## Permissions
+
+To publish a draft, the user needs the "Save entries" permission on the section of the entry.
+
 ## Installation
 
 Install using `composer require goldinteractive/craft-publisher` and install in Craft.

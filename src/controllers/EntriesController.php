@@ -52,7 +52,7 @@ class EntriesController extends Controller
         }
 
         if ($draft->enabled) {
-            $this->requirePermission('publishEntries:'.$entry->section->uid);
+            $this->requirePermission('saveEntries:'.$entry->section->uid);
         }
 
         if ($publishAt !== null) {
