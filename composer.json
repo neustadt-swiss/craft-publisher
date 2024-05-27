@@ -1,11 +1,11 @@
 {
   "name": "goldinteractive/craft-publisher",
   "description": "",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "license": "MIT",
   "type": "craft-plugin",
   "require": {
-    "craftcms/cms": "^4.0.0"
+    "craftcms/cms": "^5.0.0"
   },
   "autoload": {
     "psr-4": {

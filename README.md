@@ -34,5 +34,9 @@ CLI:
 ```
 
 ### Usage with cache plugins
-If you have a fullpage cache plugin like blitz installed, which refreshes it's cache over the queue, make sure you setup a cronjob which runs the queue too.
-(`craft queue/run`)
+If you have a fullpage cache plugin like blitz installed, which refreshes it's cache over the queue, make sure you also set up cronjobs which run the queue and refresh the expired caches.
+
+```shell
+* * * * * [PATH_TO_CRAFT_INSTALLATION]/craft blitz/cache/refresh-expired
+* * * * * [PATH_TO_CRAFT_INSTALLATION]/craft queue/run
+```
