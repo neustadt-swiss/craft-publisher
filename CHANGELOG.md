@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1 - 2024-06-17
+### Fixed
+- Fixed a bug with matrix blocks if they weren't displayed inline
+
 ## 4.0.0 - 2024-05-27
 ### Changed
 - Updated dependencies for craft 5

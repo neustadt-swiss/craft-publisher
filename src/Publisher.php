@@ -81,13 +81,15 @@ class Publisher extends Plugin
                             $element = $element->getCanonical();
                         }
 
-                        $event->html .= Craft::$app->view->renderTemplate(
-                            'publisher-x/_cp/entriesEditRightPane',
-                            [
-                                'permissionSuffix' => ':' . $element->getSection()->uid,
-                                'entry'            => $element,
-                            ]
-                        );
+                        if ($element->getSection()) {
+                            $event->html .= Craft::$app->view->renderTemplate(
+                                'publisher-x/_cp/entriesEditRightPane',
+                                [
+                                    'permissionSuffix' => ':' . $element->getSection()->uid,
+                                    'entry'            => $element,
+                                ]
+                            );
+                        }
                     }
                 }
             );
