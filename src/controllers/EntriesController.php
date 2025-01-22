@@ -1,20 +1,20 @@
 <?php
 
-namespace goldinteractive\publisher\controllers;
+namespace neustadt\publisher\controllers;
 
 use Craft;
 use craft\elements\Entry;
 use craft\errors\ElementNotFoundException;
 use craft\helpers\DateTimeHelper;
 use craft\web\Controller;
-use goldinteractive\publisher\elements\EntryPublish;
-use goldinteractive\publisher\Publisher;
+use neustadt\publisher\elements\EntryPublish;
+use neustadt\publisher\Publisher;
 use yii\web\NotFoundHttpException;
 
 /**
  * Class EntriesController
  *
- * @package goldinteractive\publisher\controllers
+ * @package neustadt\publisher\controllers
  */
 class EntriesController extends Controller
 {

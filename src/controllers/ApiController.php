@@ -1,14 +1,14 @@
 <?php
 
-namespace goldinteractive\publisher\controllers;
+namespace neustadt\publisher\controllers;
 
 use craft\web\Controller;
-use goldinteractive\publisher\Publisher;
+use neustadt\publisher\Publisher;
 
 /**
  * Class ApiController
  *
- * @package goldinteractive\publisher\controllers
+ * @package neustadt\publisher\controllers
  */
 class ApiController extends Controller
 {

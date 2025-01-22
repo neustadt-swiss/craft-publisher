@@ -1,6 +1,6 @@
 <?php
 
-namespace goldinteractive\publisher\migrations;
+namespace neustadt\publisher\migrations;
 
 use Craft;
 use craft\db\Migration;

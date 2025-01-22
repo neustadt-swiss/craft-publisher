@@ -10,7 +10,7 @@
 
 ## 3.0.1 - 2023-04-17
 ### Fixed
-- Fixed a bug where non-admin users were unable to publish drafts ([#1](https://github.com/Goldinteractive/craft-publisher/issues/1))
+- Fixed a bug where non-admin users were unable to publish drafts ([#1](https://github.com/neustadt-swiss/craft-publisher/issues/1))
 
 ## 3.0.0 - 2022-11-22
 ### Added

@@ -15,7 +15,7 @@ To publish a draft, the user needs the "Save entries" permission on the section 
 
 ## Installation
 
-Install using `composer require goldinteractive/craft-publisher` and install in Craft.
+Install using `composer require nst/craft-publisher` and install in Craft.
 
 ## Setup
 

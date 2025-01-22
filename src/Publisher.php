@@ -1,6 +1,6 @@
 <?php
 
-namespace goldinteractive\publisher;
+namespace neustadt\publisher;
 
 use craft\base\Element;
 use craft\base\Plugin;
@@ -10,15 +10,15 @@ use craft\events\DefineHtmlEvent;
 use craft\events\ElementEvent;
 use craft\services\Elements;
 use craft\web\twig\variables\CraftVariable;
-use goldinteractive\publisher\services\Entries;
+use neustadt\publisher\services\Entries;
 use yii\base\Event;
 
 /**
- * @author    Gold Interactive
+ * @author    Neustadt Agentur AG
  * @package   Publisher X
  * @since     0.1.0
  *
- * @property \goldinteractive\publisher\services\Entries $entries
+ * @property \neustadt\publisher\services\Entries $entries
  *
  */
 class Publisher extends Plugin
@@ -39,7 +39,7 @@ class Publisher extends Plugin
         );
 
         if (Craft::$app instanceof \craft\console\Application) {
-            $this->controllerNamespace = 'goldinteractive\publisher\console\controllers';
+            $this->controllerNamespace = 'neustadt\publisher\console\controllers';
         }
 
         if (Craft::$app->getRequest()->getIsCpRequest()) {

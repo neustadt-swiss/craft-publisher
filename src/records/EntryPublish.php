@@ -1,6 +1,6 @@
 <?php
 
-namespace goldinteractive\publisher\records;
+namespace neustadt\publisher\records;
 
 use craft\base\Element;
 use craft\db\ActiveRecord;
@@ -9,7 +9,7 @@ use yii\db\ActiveQueryInterface;
 /**
  * Class EntryPublish
  *
- * @package goldinteractive\publisher\records
+ * @package neustadt\publisher\records
  *
  * @property int       $id
  * @property int       $sourceId

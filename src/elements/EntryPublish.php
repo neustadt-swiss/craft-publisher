@@ -1,6 +1,6 @@
 <?php
 
-namespace goldinteractive\publisher\elements;
+namespace neustadt\publisher\elements;
 
 use Craft;
 use craft\base\Element;
@@ -8,13 +8,13 @@ use craft\elements\db\ElementQueryInterface;
 use craft\elements\Entry;
 use craft\models\EntryDraft;
 use craft\validators\DateTimeValidator;
-use goldinteractive\publisher\elements\db\EntryPublishQuery;
+use neustadt\publisher\elements\db\EntryPublishQuery;
 use yii\validators\BooleanValidator;
 
 /**
  * Class EntryPublish
  *
- * @package goldinteractive\publisher\elements
+ * @package neustadt\publisher\elements
  */
 class EntryPublish extends Element
 {

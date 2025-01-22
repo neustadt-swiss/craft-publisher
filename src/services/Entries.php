@@ -1,16 +1,16 @@
 <?php
 
-namespace goldinteractive\publisher\services;
+namespace neustadt\publisher\services;
 
 use Craft;
 use craft\base\Component;
 use craft\elements\Entry;
-use goldinteractive\publisher\elements\EntryPublish;
+use neustadt\publisher\elements\EntryPublish;
 
 /**
  * Class Entries
  *
- * @package goldinteractive\publisher\services
+ * @package neustadt\publisher\services
  */
 class Entries extends Component
 {
@@ -110,10 +110,10 @@ class Entries extends Component
 
         if ($model->id) {
             $isNew = false;
-            $record = \goldinteractive\publisher\records\EntryPublish::findOne($model->id);
+            $record = \neustadt\publisher\records\EntryPublish::findOne($model->id);
         } else {
             $isNew = true;
-            $record = new \goldinteractive\publisher\records\EntryPublish();
+            $record = new \neustadt\publisher\records\EntryPublish();
         }
 
         $record->sourceId = $model->sourceId;

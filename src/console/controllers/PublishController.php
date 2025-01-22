@@ -1,8 +1,8 @@
 <?php
 
-namespace goldinteractive\publisher\console\controllers;
+namespace neustadt\publisher\console\controllers;
 
-use goldinteractive\publisher\Publisher;
+use neustadt\publisher\Publisher;
 use yii\console\Controller;
 
 class PublishController extends Controller

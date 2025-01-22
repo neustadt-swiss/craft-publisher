@@ -1,13 +1,13 @@
 <?php
 
-namespace goldinteractive\publisher\migrations;
+namespace neustadt\publisher\migrations;
 
 use craft\db\Migration;
 
 /**
  * Class Install
  *
- * @package goldinteractive\publisher\migrations
+ * @package neustadt\publisher\migrations
  */
 class Install extends Migration
 {
