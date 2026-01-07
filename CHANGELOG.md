@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.1 - 2026-01-07
+### Fixed
+- Fixed critical bug where scheduled drafts were not being published when the parent entry was already published
+- Improved error handling in publishDueEntries() method - now only deletes scheduled publish entries after successful publication
+- Added comprehensive logging for draft publication success and failure cases
+- Wrapped applyDraft() calls in try-catch blocks to prevent silent failures
+
 ## 4.0.1 - 2024-06-17
 ### Fixed
 - Fixed a bug with matrix blocks if they weren't displayed inline

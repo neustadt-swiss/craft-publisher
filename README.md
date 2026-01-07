@@ -1,11 +1,12 @@
 # Publisher X
 
-Publisher X enables you to publish saved Drafts on a future date without 
-the need to handle the cache expiration logic. 
-The cronjob handles the publication and the cache invalidation.
+Publisher X enables you to publish saved Drafts on a future date. 
+The cronjob handles the publication, and cache invalidation is managed 
+through Craft CMS's native element save events.
 
 It also handles entries which are to expire or published in the 
-future correctly and will invalidate the cache.
+future correctly and will trigger cache invalidation through Craft's 
+standard element lifecycle events.
 
 ![Screenshot](resources/img/example1.png)
 

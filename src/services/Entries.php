@@ -51,16 +51,29 @@ class Entries extends Component
             $entry = $entryPublish->getEntry();
             $draft = $entryPublish->getDraft();
 
-            Craft::$app->elements->deleteElement($entryPublish, true);
+            $success = false;
 
             if ($draft !== null) {
-                Craft::$app->getDrafts()->applyDraft($draft);
+                try {
+                    Craft::$app->getDrafts()->applyDraft($draft);
+                    $success = true;
+                    Craft::info('Successfully published draft ' . $draft->draftId . ' for entry ' . $entry?->id, 'publisher-x');
+                } catch (\Throwable $e) {
+                    Craft::error('Could not apply draft ' . $draft->draftId . ' while publishing: ' . $e->getMessage(), 'publisher-x');
+                }
             } elseif ($entry !== null) {
                 try {
                     Craft::$app->elements->saveElement($entry);
+                    $success = true;
+                    Craft::info('Successfully saved entry ' . $entry->id . ' while publishing', 'publisher-x');
                 } catch (\Throwable $e) {
-                    Craft::error('could not save element while publishing: ' . $e->getMessage(), 'publisher-x');
+                    Craft::error('Could not save element ' . $entry->id . ' while publishing: ' . $e->getMessage(), 'publisher-x');
                 }
+            }
+
+            // Only delete the scheduled publish entry if the operation was successful
+            if ($success) {
+                Craft::$app->elements->deleteElement($entryPublish, true);
             }
         }
 
