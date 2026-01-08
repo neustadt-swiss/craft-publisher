@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.3 - 2026-01-08
+### Fixed
+- Fixed metabox styling issues in Craft CMS 5.8+ - improved layout, spacing, and visual consistency with Craft's native UI
+
 ## 5.0.2 - 2026-01-08
 ### Improved
 - After deleting a scheduled publication, now redirects to the draft edit page (if the scheduled item was a draft) instead of always redirecting to the main entry

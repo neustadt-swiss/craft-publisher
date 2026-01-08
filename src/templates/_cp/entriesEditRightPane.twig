@@ -4,57 +4,95 @@
 {% set canPublishDraft = currentUser.can('saveEntries'~permissionSuffix) %}
 {% set isVersion = className(entry) == 'craft\\models\\EntryVersion' %}
 
-<div class="meta" style="padding-top: 14px; padding-bottom: 14px;">
-    <div class="field">
-        {% if pendingEntries|length == 0 %}
-            <div class="data">
-                <h4>{{ 'No pending publish dates'|t('publisher-x') }}</h4>
-            </div>
-        {% else %}
-            <div class="data">
-                <h4>{{ 'Pending publish dates'|t('publisher-x') }}</h4>
-            </div>
+<style>
+	.publisher-x-actions {
+		display: flex;
+		justify-content: flex-end;
+		padding-top: 14px;
+		margin-left: -24px;
+		margin-right: -24px;
+		padding-right: 14px;
+		border-top: 1px solid rgba(51, 64, 77, 0.1);
+	}
 
-            {% for pendingEntry in pendingEntries %}
-                {% set title = pendingEntry.draft ? pendingEntry.draft.draftName : pendingEntry.entry.title %}
-                <div class="data">
-                    <h5>{{ title }}{{ pendingEntry.expire ? ' ('~'Expires'|t('publisher-x')~')' }}</h5>
-                    <div class="value">
-                        {{ pendingEntry.publishAt|date('short') }} {{ pendingEntry.publishAt|time('short') }}
-                        &nbsp;<a href="{{ actionUrl('publisher-x/entries/delete/', {sourceId: pendingEntry.id}) }}"
-                                 class="btn small">{{ 'Delete'|t('app') }}</a>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-    </div>
+	.publisher-x-heading {
+		display: flex;
+		justify-content: flex-start;
+		padding: 14px;
+		margin: -14px -14px 0px -24px !important;
+	}
+
+    .pending-publisher-x-schedule {
+		margin: 0px 0px 14px 0px;
+	}
+
+    .pending-publisher-x {
+		display: flex;
+        flex-direction: column;
+		align-items: flex-start;
+        padding: 14px 0px 14px 0px;
+        margin-left: -10px;
+	}
+
+	.publisher-x-schedule {
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+</style>
+
+<div class="meta">
+	<div class="pending-publisher-x">
+		{% if pendingEntries|length == 0 %}
+			<div class="data pending-publisher-x-schedule">
+				<h4>{{ 'No pending publish dates'|t('publisher-x') }}</h4>
+			</div>
+		{% else %}
+			<div class="data pending-publisher-x-schedule">
+				<h4>{{ 'Pending publish dates'|t('publisher-x') }}</h4>
+			</div>
+
+			{% for pendingEntry in pendingEntries %}
+				{% set title = pendingEntry.draft ? pendingEntry.draft.draftName : pendingEntry.entry.title %}
+				<div class="data">
+					<h5>{{ title }}{{ pendingEntry.expire ? ' ('~'Expires'|t('publisher-x')~')' }}</h5>
+					<div class="value">
+						{{ pendingEntry.publishAt|date('short') }}
+						{{ pendingEntry.publishAt|time('short') }}
+						&nbsp;<a href="{{ actionUrl('publisher-x/entries/delete/', {sourceId: pendingEntry.id}) }}" class="btn small">{{ 'Delete'|t('app') }}</a>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
 </div>
 
 {% if drafts|length > 0 and canPublishDraft %}
-    <div class="meta" style="padding-top: 14px; padding-bottom: 14px;">
-        <div class="data">
-            <h4>{{ 'Schedule a publish date'|t('publisher-x') }}</h4>
-        </div>
-        <div class="field">
-            <div class="heading"><label>{{ 'Draft'|t('publisher-x') }}</label></div>
-            <div class="input">
-                <div class="select">
-                    <select name="publisher_draftId">
-                        {% for draft in drafts %}
-                            <option value="{{ draft.draftId }}">{{ draft.draftName }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-        </div>
+	<div class="meta publisher-x-schedule">
+		<div class="publisher-x-heading">
+			<h4>{{ 'Schedule a publish date'|t('publisher-x') }}</h4>
+		</div>
+		<div class="field">
+			<div class="heading">
+				<label>{{ 'Draft'|t('publisher-x') }}</label>
+			</div>
+			<div class="input">
+				<div class="select">
+					<select name="publisher_draftId">
+						{% for draft in drafts %}
+							<option value="{{ draft.draftId }}">{{ draft.draftName }}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
 
-        {{ forms.hidden({
+		{{ forms.hidden({
             id: 'sourceSiteId',
             name: 'publisher_sourceSiteId',
             value: entry.site.id,
         }) }}
 
-        {{ forms.dateTimeField({
+		{{ forms.dateTimeField({
             label: "Publish date"|t('publisher-x'),
             id: 'publishAt',
             name: 'publisher_publishAt',
@@ -63,13 +101,12 @@
             disabled: isVersion
         }) }}
 
-        <div class="data">
-            <div class="left">
-            </div>
-            <div class="right">
-                <input type="button" class="btn formsubmit" value="{{ 'Add publish date'|t('publisher-x') }}"
-                       data-action="publisher-x/entries/save"/>
-            </div>
-        </div>
-    </div>
+		<div class="publisher-x-actions">
+			<div>
+				<input type="button" class="btn formsubmit " value="{{ 'Add publish date'|t('publisher-x') }}" data-action="publisher-x/entries/save"/>
+			</div>
+		</div>
+
+
+	</div>
 {% endif %}
