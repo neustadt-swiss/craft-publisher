@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.2 - 2026-01-08
+### Improved
+- After deleting a scheduled publication, now redirects to the draft edit page (if the scheduled item was a draft) instead of always redirecting to the main entry
+
 ## 5.0.1 - 2026-01-07
 ### Fixed
 - Fixed critical bug where scheduled drafts were not being published when the parent entry was already published

@@ -42,7 +42,7 @@ class EntriesController extends Controller
             ->one();
 
         if ($draft === null) {
-            throw new \Exception('Invalid entry draft ID: '.$draftId);
+            throw new \Exception('Invalid entry draft ID: ' . $draftId);
         }
 
         $entry = Craft::$app->entries->getEntryById($draft->getCanonicalId(), $siteId);
@@ -52,7 +52,7 @@ class EntriesController extends Controller
         }
 
         if ($draft->enabled) {
-            $this->requirePermission('saveEntries:'.$entry->section->uid);
+            $this->requirePermission('saveEntries:' . $entry->section->uid);
         }
 
         if ($publishAt !== null) {
@@ -94,9 +94,15 @@ class EntriesController extends Controller
 
         if ($entryPublish !== null) {
             $entry = $entryPublish->getEntry();
+            $draft = $entryPublish->getDraft();
 
             $entriesService->deleteEntryPublish($publishEntryId);
-            $this->redirect($entry->getCpEditUrl());
+
+            if ($draft !== null) {
+                $this->redirect($draft->getCpEditUrl());
+            } else {
+                $this->redirect($entry->getCpEditUrl());
+            }
 
             return true;
         }
